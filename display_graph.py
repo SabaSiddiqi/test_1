@@ -13,4 +13,6 @@ def display_graph(coor_list):
     ax.margins(0.1)
     pl.show(block=False)
     
+    pl.show()
+    
 

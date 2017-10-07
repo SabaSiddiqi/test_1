@@ -45,10 +45,6 @@ class VertexAndEdge (object):
             display += " " + c + ", \n"
         display += "} \n"
         
-             
-        
-        
-        
         
         return display
             

@@ -60,6 +60,7 @@ def main():
             if a or c:
                 #extract coordinates
                 street_name = re.findall('\".+\"',input_command)[0]
+                street_name = street_name.lower()
                 street_coor=extract_coor(input_command)
 
                 if a:
@@ -68,13 +69,13 @@ def main():
                         show_error("Error: Street already exists, cannot add.")
                     else:
                         street_temp.append(StreetList(street_name,street_coor))
-                        show_output("Street added.")
+                        #show_output("Street added.")
                         
                 if c:
                     if street_name in names_list:
                         #extract index of street to be changed and change coordinates
                         street_temp[names_list.index(street_name)].street_coor = street_coor
-                        show_output("Street changed.")
+                        #show_output("Street changed.")
                     else:
                         show_error("Error: Street doesn't exist, cannot change.")
                 
@@ -83,7 +84,7 @@ def main():
                 
                 if street_name in names_list:
                     del street_temp[names_list.index(street_name)]
-                    show_output("Street removed.")
+                    #show_output("Street removed.")
                 else:
                     show_error("Error: Street doesn't exist, cannot remove.")
             
