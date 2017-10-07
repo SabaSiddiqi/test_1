@@ -11,8 +11,7 @@ def display_graph(coor_list):
     ax.add_collection(lc)
     ax.autoscale()
     ax.margins(0.1)
-    pl.show(block=False)
-    
     pl.show()
+
     
 
