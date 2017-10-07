@@ -9,7 +9,7 @@ from extract_coor import extract_coor
 from intersection import intersection
 from vertexandedge import VertexAndEdge
 from numpy import *
-from display_graph import display_graph
+#from display_graph import display_graph
 #------------------Import Functions/Modules-----------------#
 
 
