@@ -9,6 +9,7 @@ from extract_coor import extract_coor
 from intersection import intersection
 from vertexandedge import VertexAndEdge
 from numpy import *
+from display_graph import display_graph
 #------------------Import Functions/Modules-----------------#
 
 
@@ -22,9 +23,19 @@ class StreetList (object):
 
 #--------------Street Class-----------------#
 
+#-----------Function - Error and output-----------------#
+def show_error(error):
+    sys.stderr.write("%s\n" % error) 
+
+def show_output(output):
+    sys.stderr.write("%s\n" % output) 
+
+#-----------Function - Error and output-----------------#
+
 street_temp=[]
 coor=[]
 vne=VertexAndEdge()
+
 
 
 # -----Main------ Write your code here
@@ -42,9 +53,6 @@ def main():
         # if input is in correct format 
         if a or c or r or g:
             
-            #extract the command i.e. first element of input
-            
-            
             #extract street names from class StreetList
             names_list = [ temp.street_name for temp in street_temp] 
             coor_list = [ temp.street_coor for temp in street_temp]
@@ -57,29 +65,33 @@ def main():
                 if a:
                  
                     if street_name in names_list:
-                        print "Error: Street already exists, cannot add."
+                        show_error("Error: Street already exists, cannot add.")
                     else:
                         street_temp.append(StreetList(street_name,street_coor))
+                        show_output("Street added.")
                         
                 if c:
                     if street_name in names_list:
                         #extract index of street to be changed and change coordinates
                         street_temp[names_list.index(street_name)].street_coor = street_coor
+                        show_output("Street changed.")
                     else:
-                        print "Error: Street doesn't exist, cannot change."
+                        show_error("Error: Street doesn't exist, cannot change.")
                 
             if r:
                 street_name = re.findall('\".+\"',input_command)[0]
                 
                 if street_name in names_list:
                     del street_temp[names_list.index(street_name)]
+                    show_output("Street removed.")
                 else:
-                    print "Error: Street doesn't exist, cannot remove."
+                    show_error("Error: Street doesn't exist, cannot remove.")
             
             if g:
-                
+                display_graph(coor_list)
+                vne.vertices = []
+                vne.edges = []
                 #extracting number of streets for for loops
-                print "i am in graph"
                 nos=len(street_temp)
                 for first_street in range (nos-1):
                     #extracting number of coordinates for desired street
@@ -122,13 +134,8 @@ def main():
         
         # if input is not in correct format 
         else:
-            pass
+            show_error("Error: Incorrect input format, please try again.")
 
-        #print names_list
-        #print coor_list
-
-         
-        #check command 
     
     sys.exit(0)
 

@@ -1,6 +1,3 @@
-from numpy import *
-import math
-
 def intersection(x,y,u,v):
 
     [x1, y1] = x
