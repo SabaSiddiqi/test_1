@@ -89,7 +89,7 @@ def main():
                     show_error("Error: Street doesn't exist, cannot remove.")
             
             if g:
-                display_graph(coor_list)
+                #display_graph(coor_list)
                 vne.vertices = []
                 vne.edges = []
                 #extracting number of streets for for loops
